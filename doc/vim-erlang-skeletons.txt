@@ -32,6 +32,8 @@ COMMANDS                                        *ErlangSkeletonsCommands*
 :ErlCTSuite             Loads commontest template into current buffer.
                                                 *ErlCTSuite*
 :ErlApplication         Loads application template into current buffer.
+                                                *ErlCowboyREST*
+:ErlCowboyREST          Loads cowboy-REST template into current buffer.
                                                 *ErlTemplate*
 :ErlTemplate [arg]      Loads [arg] template into current buffer.
 
