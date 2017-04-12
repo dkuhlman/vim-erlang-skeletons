@@ -8,12 +8,22 @@
 %%%-------------------------------------------------------------------
 -module($basename).
 
+%%
+%% Cowboy callbacks
 -export([
          init/2
         ]).
 
-init(Req, State) ->
-    {cowboy_rest, Req, State}.
+%%
+%% Additional callbacks
+-export([
+        ]).
+
+-record(state, {item1, item2}).
+
+init(Req, _State) ->
+    State1 = State#state{item1=nil, item2=nil},
+    {cowboy_rest, Req, State1}.
 
 %%allowed_methods(Req, State) ->
 %%    Value = [<<"GET">>, <<"HEAD">>, <<"OPTIONS">>],
@@ -24,10 +34,13 @@ init(Req, State) ->
 %%    {Value, Req, State}.
 
 %%charsets_provided(Req, State) ->
+%%    % Example: 
+%%    % Value = [{{ <<"text">>, <<"json">>, '*'}, from_json}],
 %%    Value = skip,
 %%    {Value, Req, State}.
 
 %%content_types_accepted(Req, State) ->
+%%    Value = [{{ <<"text">>, <<"html">>, '*'}, to_html}],
 %%    Value = none,
 %%    {Value, Req, State}.
 
@@ -64,7 +77,15 @@ init(Req, State) ->
 %%    {Value, Req, State}.
 
 %%known_methods(Req, State) ->
-%%    Value = [<<"GET">>, <<"HEAD">>, <<"POST">>, <<"PUT">>, <<"PATCH">>, <<"DELETE">>, <<"OPTIONS">>],
+%%    Value = [
+%%             <<"GET">>,
+%%             <<"HEAD">>,
+%%             <<"POST">>,
+%%             <<"PUT">>,
+%%             <<"PATCH">>,
+%%             <<"DELETE">>,
+%%             <<"OPTIONS">>
+%%            ],
 %%    {Value, Req, State}.
 
 %%languages_provided(Req, State) ->
